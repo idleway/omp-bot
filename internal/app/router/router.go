@@ -4,6 +4,7 @@ import (
 	"github.com/ozonmp/omp-bot/internal/app/commands/demo"
 	"github.com/ozonmp/omp-bot/internal/app/commands/education"
 	"log"
+	"runtime/debug"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 	"github.com/ozonmp/omp-bot/internal/app/path"
@@ -86,7 +87,7 @@ func NewRouter(
 func (c *Router) HandleUpdate(update tgbotapi.Update) {
 	defer func() {
 		if panicValue := recover(); panicValue != nil {
-			log.Printf("recovered from panic: %v", panicValue)
+			log.Printf("recovered from panic: %v\n%v", panicValue, string(debug.Stack()))
 		}
 	}()
 
