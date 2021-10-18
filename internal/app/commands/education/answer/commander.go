@@ -42,18 +42,14 @@ func (c *AnswerCommander) HandleCommand(message *tgbotapi.Message, commandPath p
 		err = c.Get(message)
 	case "delete":
 		err = c.Delete(message)
+	case "new":
+		err = c.New(message)
+	case "edit":
+		err = c.Edit(message)
 	default:
 		err = c.Default(message)
 	}
 	if err != nil {
 		log.Printf("command %s exec fail, err is %v", commandPath.CommandName, err)
 	}
-}
-
-func (c *AnswerCommander) New(inputMsg *tgbotapi.Message) {
-	//TODO add implementation
-}
-
-func (c *AnswerCommander) Edit(inputMsg *tgbotapi.Message) {
-	//TODO add implementation
 }

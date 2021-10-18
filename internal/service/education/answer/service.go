@@ -35,9 +35,9 @@ func (*DummyAnswerService) Create(answer Answer) (uint64, error) {
 	return answer.ID, nil
 }
 
-func (*DummyAnswerService) Update(answerID uint64, answer Answer) error {
+func (*DummyAnswerService) Update(answer Answer) error {
 	for i := range allEntities {
-		if allEntities[i].ID == answerID {
+		if allEntities[i].ID == answer.ID {
 			allEntities[i] = answer
 			return nil
 		}
